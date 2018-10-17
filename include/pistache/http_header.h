@@ -186,6 +186,32 @@ private:
   std::string uri_;
 };
 
+class AccessControlAllowMethods : public Header {
+public:
+  NAME("Access-Control-Allow-Methods")
+
+  AccessControlAllowMethods() { }
+
+  explicit AccessControlAllowMethods(const char* uri)
+    : uri_(uri)
+  { }
+  explicit AccessControlAllowMethods(const std::string& uri)
+    : uri_(uri)
+  { }
+
+  void parse(const std::string& data);
+  void write(std::ostream& os) const;
+
+  void setUri(std::string uri) {
+    uri_ = std::move(uri);
+  }
+
+  std::string uri() const { return uri_; }
+
+private:
+  std::string uri_;
+};
+
 class AccessControlAllowHeaders : public Header {
 public:
   NAME("Access-Control-Allow-Headers")

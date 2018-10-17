@@ -433,6 +433,16 @@ AccessControlAllowOrigin::write(std::ostream& os) const {
 }
 
 void
+AccessControlAllowMethods::parse(const std::string& data) {
+  uri_ = data;
+}
+
+void
+AccessControlAllowMethods::write(std::ostream& os) const {
+  os << uri_;
+}
+
+void
 AccessControlAllowHeaders::parse(const std::string& data) {
   val_ = data;
 }
